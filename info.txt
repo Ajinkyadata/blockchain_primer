@@ -1,0 +1,32 @@
+
+geth --datadir ../private/data/node1 --nodiscover --syncmode 'full' --verbosity 6 --networkid 66556655 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --unlock '0x9295020B9e3Ba8870D96d62dC372adA0Ed3CA617' --ipcdisable --port 30301 --http --http.addr 'localhost' --http.port 8101 --http.api admin,debug,eth,miner,net,personal,shh,txpool,web3 --password ../private/password.txt --mine --allow-insecure-unlock
+
+
+geth --datadir ../private/data/node2 --nodiscover --syncmode 'full' --verbosity 6 --ipcdisable --port 30302 --http --http.addr 'localhost' --http.port 8102 --http.api admin,debug,eth,miner,net,personal,shh,txpool,web3 --networkid 66556655 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --unlock '0xc065BBba0E246a706d04D4Cbe48D1033801f6726' --password ../private/password.txt --allow-insecure-unlock
+
+geth --datadir ../private/data/node3 --nodiscover --syncmode 'full' --verbosity 6 --ipcdisable --port 30303 --http --http.addr 'localhost' --http.port 8103 --http.api admin,debug,eth,miner,net,personal,shh,txpool,web3 --networkid 66556655 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --unlock '0xd8A0DCA7B419AE8F4b98402C65377d989e7ef26C' --password ../private/password.txt --allow-insecure-unlock
+
+
+
+eth.sendTransaction({from: "0x9295020B9e3Ba8870D96d62dC372adA0Ed3CA617", to: "0xA04B74DD2BC67cB8dF000A77fb813801f8A74810", value: "74000000000000000"})
+
+
+> 0x9295020B9e3Ba8870D96d62dC372adA0Ed3CA617
+> 0xc065BBba0E246a706d04D4Cbe48D1033801f6726
+> 0xd8A0DCA7B419AE8F4b98402C65377d989e7ef26C
+
+
+
+
+bootnode -nodekey bootnode.key -verbosity 7 -addr :8890
+enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=8890
+
+
+geth --datadir ../private/data/node3 --networkid 66556655 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --allow-insecure-unlock
+
+
+
+geth --datadir ../private/data/node2 --networkid 66556655 --port 30302 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --allow-insecure-unlock
+
+
+geth --datadir ../private/data/node1 --networkid 66556655 --port 30301 --bootnodes 'enode://0df122e96e81224bb008e2cf3b8287657c7d9932d565dec0786c7581d893e29ea8830a6dffc7260c7e4293223f7021d55276d013468f2feeb22a78a04492a503@127.0.0.1:0?discport=30300' --unlock '0x9295020B9e3Ba8870D96d62dC372adA0Ed3CA617' --mine --allow-insecure-unlock
